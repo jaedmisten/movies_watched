@@ -75,3 +75,5 @@ Need to autofill date watched field.
 
 10/21/18 - Fixed date_watched field not being autofilled on edit page. 
 
+
+10/24/18 - Setup version control with git and a remote repository on github.
