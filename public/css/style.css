@@ -1,0 +1,50 @@
+body {
+    background: lightblue;
+}
+
+#header {
+    margin-bottom: 25px;
+}
+
+#title-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+#home-link {
+    text-decoration: none;
+    color: #337ab7;
+}
+
+.page-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.date-watched {
+    white-space: nowrap;
+}
+
+.sortable-column {
+    white-space: nowrap;
+}
+
+.button-spacing {
+    margin-bottom: 7px;
+}
+
+.error-message {
+    color: red;
+    font-style: bold;
+}
+
+.footer {
+    margin-top: 70px;
+    background-color: lightgray;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

@@ -1,0 +1,77 @@
+7/20/18 - Fixed issue with date_watched being saved in dd/mm/yyyy format.
+
+Dates in the m/d/y or d-m-y formats are disambiguated by looking at the separator between the various components: 
+if the separator is a slash (/), then the American m/d/y is assumed; whereas if the separator is a dash (-) or a 
+dot (.), then the European d-m-y format is assumed.
+
+
+7/21/18 - Added director to add movie form and saving to the database.
+
+Added uploading of picture when adding movie. Picture is given file name of hash that matches the movie.
+Picture file is moved to 'public/uploads/img' dir.
+enctype="multipart/form-data" needed to be in the form tag because of the <input type='file'> tag that is used 
+for uploading.
+
+
+7/22/18 - Updated datepicker settings to disable future dates and changed the type to be text input
+instead of embedded/inline.
+
+Updated the header.
+
+
+7/29/18 - Created basic page for movies watched list that queries all movies in the table.
+
+
+8/2/18 - Updated list items of movies watched to show the rest of the details and the picture of the movie.
+
+
+8/4/18 - Updated list of movies watched to show date watched with just the date instead of the time appended to the date.
+Needed to do date('m-d-Y', strtotime($movie['date_watched'])); Without using strtotime there is a notice warning about the date_watched
+because date function needs second parameter to be integer. strtotime converts the string to the correct integer value.
+
+
+8/10/18 - Made update to save blank notes input as null instead of empty string. Blank form fields that are submitted have an 
+empty string value instead of null. Need to do a server side check of required input values and send back errors when needed.
+
+Created xhr call from angular to get list of movies. Will be able to do sorting and filtering and playing with angular now.
+
+
+9/21/18 - Added sorting to title, director, and date watched columns. Date watched is being sorted incorrectly. 
+Need to change format of date or some type of solution.
+
+Altered DB table to have year_released column. Need to update add movie form to use this.
+
+
+9/23/18 - Added ability to delete movie. 
+
+Currently if there is a sql error the PDOException error will be returned to the modal. Should probably log the error 
+somewhere and leave a user friendly error message on the screen.
+
+
+9/30/18 - Added edit movie page. The form in the page currently fills in all values from selected movie except for 
+the picture and date watched.
+
+
+10/2/18 - Added cancel buttons to add movie and edit movie pages. Added picture to edit movie page. 
+
+On the edit page, the date watched date picker is not being selected. I changed the format of $scope.movie.date_watched to 
+use - instead of /, but it is still blank. 
+
+
+10/6/18 - Continued working on edit page. Created editMovie.php page that edit page post request is sent to. 
+Currently, updating one movie will update all the movies.
+
+
+10/12/18 - Fixed edit page to update only the chosen movie. Added hidden input field to form to send movie id and then
+use the movie id in the sql update statement. Needed to use ng-value in the input field to get the id sent:
+ <input type="hidden" name="id" ng-value="movie.id">
+
+Need to update so that if there is a picture and a new picture is not selected then the old picture will still be used.
+Need to autofill date watched field.
+
+
+10/16/18 - Started a footer.
+
+
+10/21/18 - Fixed date_watched field not being autofilled on edit page. 
+
