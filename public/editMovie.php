@@ -35,7 +35,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['date_watched']) ) {
         $dateWatched = date('Y-m-d', strtotime($_POST['date_watched']));
     }
-    $hash = md5(time() . uniqid());
+    if ( isset($_POST['hash']) ) {
+        $hash = $_POST['hash'];
+    }
     if ( isset($_FILES['picture']) ) {
         // Handle uploaded picture.
         $currentDir = getcwd();
@@ -47,10 +49,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     }
        
     try {
-        $sql = 'UPDATE movies SET `title` = ?, `description` = ?, `notes` = ?, `director` = ?, `hash` = ?, `date_watched` = ?, `year_released` = ? 
+        $sql = 'UPDATE movies SET `title` = ?, `description` = ?, `notes` = ?, `director` = ?, `date_watched` = ?, `year_released` = ? 
             WHERE `id` = ?';
         $stmt = $pdo->prepare($sql);
-        $result = $stmt->execute([$title, $description, $notes, $director, $hash, $dateWatched, $yearReleased, $id]);
+        $result = $stmt->execute([$title, $description, $notes, $director, $dateWatched, $yearReleased, $id]);
 
         $movieEdited = true;
         header('Location: index.php');

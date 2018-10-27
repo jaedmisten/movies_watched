@@ -173,6 +173,7 @@ while ($row = $query1->fetch()) {
                 <div class="page-title">EDIT MOVIE</div>
                 <form name="editMovieForm" class="form-horizontal" action="editMovie.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" ng-value="movie.id">
+                    <input type="hidden" name="hash" ng-value="movie.hash">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" class="form-control" ng-model="movie.title" required>
@@ -208,9 +209,6 @@ while ($row = $query1->fetch()) {
                     <button class="btn btn-default" ng-click="goToViewMoviesPage()">Cancel</button>
                 </form>
                 <br>
-                [[movie]]
-                <br><br>
-                [[editMovieForm]]
             </div>
 
             <!-- Delete movie modal. -->
