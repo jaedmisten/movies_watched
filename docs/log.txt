@@ -82,4 +82,8 @@ Need to autofill date watched field.
 10/27/18 - Fixed issue with editing movie not saving default image. The uploaded image uses the hash for the filename.
 A new hash was being created everytime the movie was edited.
 
-10/31/18 - Started table of random movies images on home page.
+
+10/31/18 - Started table of random movie images on home page.
+
+
+11/1/18 - Finished adding table of random movie images to the home page.  
