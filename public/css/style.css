@@ -46,8 +46,19 @@ body {
     width: 100%;
     background-color: lightgray;
     text-align: center;
+    padding: 15px;
 }
 
 .footer-text {
     margin-bottom: 0;
+}
+
+#random-movies-table {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#random-movies-table td {
+    padding: 50px;
 }

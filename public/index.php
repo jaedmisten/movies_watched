@@ -1,6 +1,6 @@
 <?php include '../config/connect.php' ?>
 <?php include 'addMovie.php' ?>
-<?php include '../config/connect.php'; ?>
+
 <?php
 //var_dump($pdo);
 
@@ -26,10 +26,22 @@ while ($row = $query1->fetch()) {
                 <h1 id="title-header"><a id="home-link" href="" ng-click="goToHomePage()">Movies Watched App</a></h1>
             </div>
             <!-- home -->
-            <div id="home" ng-if="homePage" style="text-align: center;">
+            <div id="home" ng-if="homePage" ng-init="getRandomMovies()" style="text-align: center;">
                 <button class="btn btn-default" ng-click="goToAddMoviePage()">Add Movie</button><br><br>
                 <button class="btn btn-default" ng-click="goToViewMoviesPage()">View Movies Watched</button><br><br>
                 <button class="btn btn-default" ng-click="goToViewMoviesPagePhp()">View Movies Watched (PHP)</button>
+                <table id="random-movies-table">
+                    <tr ng-show="randomMovieHashes.length >= 3">
+                        <td><img src="[['uploads/img/' + randomMovieHashes[0] + '.jpg']]" width="100"></td>
+                        <td><img src="[['uploads/img/' + randomMovieHashes[1] + '.jpg']]" width="100"></td>
+                        <td><img src="[['uploads/img/' + randomMovieHashes[2] + '.jpg']]" width="100"></td>
+                    </tr>
+                    <tr ng-show="randomMovieHashes.length >= 6">
+                        <td><img src="[['uploads/img/' + randomMovieHashes[3] + '.jpg']]" width="100"></td>
+                        <td><img src="[['uploads/img/' + randomMovieHashes[4] + '.jpg']]" width="100"></td>
+                        <td><img src="[['uploads/img/' + randomMovieHashes[5] + '.jpg']]" width="100"></td>
+                    </tr>
+                </table>
             </div>
             
             <!-- Add movie section. -->

@@ -11,7 +11,7 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
 
 
     console.log('moviesWatchedController called and updated');
-
+    
     $scope.goToHomePage = function() {
         console.log('goToHomePage called')
         $scope.homePage = true;
@@ -114,6 +114,21 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
 
                 $('#deleteMovieModal').modal('hide');
                 $('#movieDeleteFailedModal').modal('show');
+            }
+        );
+    };
+
+    $scope.getRandomMovies = function() {
+        $http.get('/getRandomMovies.php').then(
+            function(response) {
+                console.log('Success Callback');
+                console.log('response: ', response);
+                console.log('data: ', response.data);
+                $scope.randomMovieHashes = response.data;
+                console.log('$scope.randomMovies: ', $scope.randomMovieHashes);
+                console.log(typeof($scope.randomMovieHashes));
+            }, function() {
+                console.log('Error callback');
             }
         );
     };
