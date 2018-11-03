@@ -45,7 +45,7 @@ while ($row = $query1->fetch()) {
             </div>
             
             <!-- Add movie section. -->
-            <div id="addMovie" ng-if="addMoviePage">
+            <div id="add-movie" ng-if="addMoviePage">
                 <div class="page-title">ADD MOVIE</div>
                 <form name="addMovieForm" class="form-horizontal" action="addMovie.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -83,7 +83,7 @@ while ($row = $query1->fetch()) {
             </div>
 
             <!-- View movies section using php query instead of angular. -->
-            <div id="viewMoviesPhp" ng-if="viewMoviesPagePhp">
+            <div id="view-movies-php" ng-if="viewMoviesPagePhp">
                 <div class="page-title">WATCHED MOVIES LIST (PHP)</div>
                 <?php 
                     
@@ -124,7 +124,7 @@ while ($row = $query1->fetch()) {
                 <?php endforeach ?>
             </div>
             <!-- View movies section using  angular. -->
-            <div id="viewMovies" ng-if="viewMoviesPage">
+            <div id="view-movies" ng-if="viewMoviesPage">
                 <div class="page-title">WATCHED MOVIES LIST</div>
 
                 <table class="table">
@@ -181,7 +181,7 @@ while ($row = $query1->fetch()) {
             </div>
 
             <!-- Edit movie section. -->
-            <div id="editMovie" ng-if="editMoviePage">
+            <div id="edit-movie" ng-if="editMoviePage">
                 <div class="page-title">EDIT MOVIE</div>
                 <form name="editMovieForm" class="form-horizontal" action="editMovie.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" ng-value="movie.id">

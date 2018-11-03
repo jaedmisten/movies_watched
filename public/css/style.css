@@ -6,6 +6,16 @@ body {
     margin-bottom: 25px;
 }
 
+#add-movie {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#edit-movie {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
 #title-header {
     text-align: center;
     font-weight: bold;
