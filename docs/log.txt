@@ -87,3 +87,9 @@ A new hash was being created everytime the movie was edited.
 
 
 11/1/18 - Finished adding table of random movie images to the home page.  
+
+
+11/3/18 - Updated padding of add and edit movie pages to have right and left margins on smaller browser windows(<992px).
+The row class in bootstrap has negative right and left margins of -15. Added 15px margin to main divs on these pages
+to offset the negative margins. The tables in the view movies pages have a display property of 'table' that seems to 
+offset the row class negative margins.
