@@ -77,8 +77,10 @@ while ($row = $query1->fetch()) {
                         <input type="text" id="date_watched" name="date_watched" class="form-control" 
                                data-provide="datepicker" data-date-end-date="0d" ng-model="date_watched" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" ng-click="addMovie()" ng-disabled="addMovieForm.$invalid">Submit</button>
-                    <button class="btn btn-default" ng-click="goToHomePage()">Cancel</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" ng-click="addMovie()" ng-disabled="addMovieForm.$invalid">Submit</button>
+                        <button class="btn btn-default" ng-click="goToHomePage()">Cancel</button>
+                    </div>
                 </form>
             </div>
 
@@ -217,8 +219,10 @@ while ($row = $query1->fetch()) {
                         <input type="text" id="date_watched" name="date_watched" class="form-control" data-provide="datepicker" 
                                data-date-end-date="0d" ng-model="movie.date_watched" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" ng-click="editMovie()" ng-disabled="addMovieForm.$invalid">Submit</button>
-                    <button class="btn btn-default" ng-click="goToViewMoviesPage()">Cancel</button>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" ng-click="editMovie()" ng-disabled="addMovieForm.$invalid">Submit</button>
+                        <button class="btn btn-default" ng-click="goToViewMoviesPage()">Cancel</button>
+                    </div>
                 </form>
                 <br>
             </div>
