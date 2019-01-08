@@ -23,3 +23,13 @@
 </head>
 
 <body>
+<?php ini_set('display_errors', 0); ?>
+<?php //edho(); ?>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8" ng-controller="moviesWatchedController">
+            <?php if (isset($movieInserted)) echo "The movie was successfully added."; ?>
+            <div id="header">
+                <h1 id="title-header"><a id="home-link" href="" ng-click="goToHomePage()">Movies Watched App</a></h1>
+            </div>

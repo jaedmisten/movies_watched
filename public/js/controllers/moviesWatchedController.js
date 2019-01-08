@@ -1,5 +1,6 @@
 // Controller
-moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', function ($scope, $http) {
+moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', '$window', 
+function ($scope, $http, $window) {
     $scope.homePage = true;
     $scope.addMoviePage = false;
     $scope.viewMoviesPage = false;
@@ -14,15 +15,19 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
     
     $scope.goToHomePage = function() {
         console.log('goToHomePage called')
+        $window.location.href = '/';
+        /*
         $scope.homePage = true;
         $scope.addMoviePage = false;
         $scope.viewMoviesPage = false;
         $scope.viewMoviesPagePhp = false;
         $scope.editMoviePage = false;
+        */
     };
 
     $scope.goToAddMoviePage = function() {
-        console.log('goToAddMoviePage called')
+        console.log('goToAddMoviePage called');
+        window.scroll(0, 0);
         $scope.homePage = false;
         $scope.addMoviePage = true;
         $scope.viewMoviesPage = false;
@@ -31,6 +36,7 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
     };
 
     $scope.goToViewMoviesPage = function() {
+        window.scroll(0, 0);
         $scope.homePage = false;
         $scope.addMoviePage = false;
         $scope.viewMoviesPage = true;
@@ -53,6 +59,7 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
 
     $scope.goToEditMoviePage = function(movie) {
         console.log('movie: ', movie);
+        window.scroll(0, 0);
         $scope.movie = movie;
         $scope.movie.year_released = parseInt($scope.movie.year_released);
         $scope.movie.date_watched = $scope.movie.date_watched.replace(/-/g, '/');
@@ -67,6 +74,7 @@ moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', funct
 
     $scope.goToViewMoviesPagePhp = function() {
         console.log('toToViewMoviesPage called');
+        window.scroll(0, 0);
         $scope.homePage = false;
         $scope.addMoviePage = false;
         $scope.viewMoviesPage = false;
