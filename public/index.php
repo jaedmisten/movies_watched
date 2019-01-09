@@ -99,9 +99,12 @@
         <!-- View movies section using  angular. -->
         <div id="view-movies" ng-if="viewMoviesPage">
             <div class="page-title">WATCHED MOVIES LIST</div>
-            <div style="margin-bottom: 10px;">
-                <form class="form-inline" style="float:right;margin-bottom:30px;"><label>Search</label> <input type="text" class="form-control" ng-model="searchFilter"></form>
-            </div>
+            <form class="form-inline" style="float:right;margin-bottom:30px;">
+                <div class="form-group">
+                    <label>Search</label> 
+                    <input type="text" class="form-control" ng-model="searchFilter">
+                </div>
+            </form>
             <br><br>
             <table class="table">
                 <thead>
@@ -139,16 +142,16 @@
                     <tr ng-repeat="movie in movies | orderBy: sortType : sortReverse | filter: searchFilter">
                         <td>
                             <b>[[movie.title]]</b><br><br>
-                            <img src="[['uploads/img/' + movie.hash + '.jpg']]" alt="[[movie.title + ' Picture']]" 
+                            <img ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'" alt="[[movie.title + ' Picture']]" 
                                     title="[[movie.title + ' Picture']]" width="140">
                         </td>
                         <td>[[movie.director]]</td>
-                        <td>[[movie.description]]</td>
-                        <td>[[movie.notes]]</td>
+                        <td style="white-space:pre-line;">[[movie.description]]</td>
+                        <td style="white-space:pre-line;">[[movie.notes]]</td>
                         <td>[[movie.year_released]]</td>
                         <td><span class="date-watched">[[movie.date_watched]]</span></td>
                         <td>
-                            <button class="btn btn-default button-spacing" ng-click="goToEditMoviePage(movie)">Edit</button>
+                            <button class="btn btn-default button-spacing" style="width:67px;" ng-click="goToEditMoviePage(movie)">Edit</button>
                             <button class="btn btn-danger" ng-click="openDeleteMovieModal(movie)">Delete</button>
                         </td>
                         <tr>
@@ -175,7 +178,7 @@
                 </div>
                 <div class="form-group">
                     <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" class="form-control" rows="5" ng-model="movie.notes"></textarea>
+                    <textarea id="notes" name="notes" class="form-control"  rows="5" ng-model="movie.notes"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="director">Director</label>
