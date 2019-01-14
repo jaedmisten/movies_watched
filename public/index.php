@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="year_released">Year Released</label>
-                    <input type="number" id="year_released" name="year_released" class="form-control" min="1900" max="2099">
+                    <input type="number" id="year_released" name="year_released" class="form-control" min="1900" max="[[currentYear]]">
                 </div>
                 <div class="form-group">
                     <label for="picture">Photo</label>

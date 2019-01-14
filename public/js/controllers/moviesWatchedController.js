@@ -9,7 +9,8 @@ function ($scope, $http, $window) {
     $scope.movie = {};
     $scope.sortType = 'title';
     $scope.sortReverse = false;
-
+    $scope.currentYear = (new Date()).getFullYear();
+    console.log('currentYear: ', $scope.currentYear);
 
     console.log('moviesWatchedController called and updated');
     
