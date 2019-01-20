@@ -96,7 +96,8 @@
             </ul>
             <?php endforeach ?>
         </div>
-        <!-- View movies section using  angular. -->
+
+        <!-- View movies section using angular. -->
         <div id="view-movies" ng-if="viewMoviesPage">
             <div class="page-title">WATCHED MOVIES LIST</div>
             <form class="form-inline" style="float:right;margin-bottom:30px;">
@@ -142,8 +143,8 @@
                     <tr ng-repeat="movie in movies | orderBy: sortType : sortReverse | filter: searchFilter">
                         <td>
                             <b>[[movie.title]]</b><br><br>
-                            <img ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'" alt="[[movie.title + ' Picture']]" 
-                                    title="[[movie.title + ' Picture']]" width="140">
+                            <img ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'" 
+                                    alt="[[movie.title + ' Picture']]" title="[[movie.title + ' Picture']]" width="140">
                         </td>
                         <td>[[movie.director]]</td>
                         <td style="white-space:pre-line;">[[movie.description]]</td>
@@ -191,8 +192,8 @@
                 <div class="form-group">
                     <label for="picture">Photo</label>
                     <input type="file" id="picture" name="picture" accept="image/*">
-                    <img style="margin-top:5px;" src="[['uploads/img/' + movie.hash + '.jpg']]" alt="[[movie.title + ' Picture']]" 
-                                    title="[[movie.title + ' Picture']]" width="70">
+                    <img style="margin-top:5px;" ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'"  
+                                    alt="[[movie.title + ' Picture']]" title="[[movie.title + ' Picture']]" width="70">
                 </div>
                 <div class="form-group">
                     <label for="date_watched">Date Watched</label>

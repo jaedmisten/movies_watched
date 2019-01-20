@@ -3,7 +3,7 @@
 include '../config/connect.php';
 
 try {
-    $sql = 'SELECT * FROM movies';
+    $sql = 'SELECT * FROM movies WHERE `image_uploaded` = 1';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -35,9 +35,10 @@ try {
         }
 
         echo json_encode($randomMovieHashes);
-    } else {
-        return false;
-    }  
+    }
+    
+    return false;
+      
 } catch (PDOException $e) {
     echo 'IT FAILED!!!<br><br>';
     echo '<pre>';

@@ -9,10 +9,16 @@ include '../config/connect.php';
 //echo '<br><br>';
 /*
 echo '<pre>';
-var_dump($_POST);
+print_r($_FILES);
 echo '</pre>';
-die();
+echo '<pre>';
+var_dump($_FILES);
+echo '</pre>';
+echo "name: " . $_FILES['picture']['name'];
+echo "<br>type: " . gettype($_FILES['picture']['name']);
 */
+//die();
+
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['title']) ) {
         $title = trim($_POST['title']);
@@ -33,7 +39,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $dateWatched = date('Y-m-d', strtotime($_POST['date_watched']));
     }
     $hash = md5(time() . uniqid());
-    if ( isset($_FILES['picture']) ) {
+    if ( isset($_FILES['picture']['name']) && $_FILES['picture']['name'] != "" ) {
+        $imageUploaded = true;
+        
         // Handle uploaded picture.
         $currentDir = getcwd();
         $uploadsDir = '\\uploads\\img\\';
@@ -41,12 +49,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $fileName = $hash . '.' . $fileExtension;
         $uploadsPath = $currentDir . $uploadsDir . basename($fileName);
         move_uploaded_file($_FILES['picture']['tmp_name'], $uploadsPath);
+    } else {
+        $imageUploaded = false;
     }
        
     try {
-        $sql = 'INSERT INTO movies (`title`, `description`, `notes`, `director`, `hash`, `date_watched`, `year_released`) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO movies (`title`, `description`, `notes`, `director`, `hash`, `image_uploaded`, `date_watched`, `year_released`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
         $stmt = $pdo->prepare($sql);
-        $result = $stmt->execute([$title, $description, $notes, $director, $hash, $dateWatched, $yearReleased]);
+        $result = $stmt->execute([$title, $description, $notes, $director, $hash, $imageUploaded, $dateWatched, $yearReleased]);
 
         $movieInserted = true;
         header('Location: index.php');
