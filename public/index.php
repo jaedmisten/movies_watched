@@ -152,8 +152,8 @@
                         <td>[[movie.year_released]]</td>
                         <td><span class="date-watched">[[movie.date_watched]]</span></td>
                         <td>
-                            <button class="btn btn-default button-spacing" style="width:67px;" ng-click="goToEditMoviePage(movie)">Edit</button>
-                            <button class="btn btn-danger" ng-click="openDeleteMovieModal(movie)">Delete</button>
+                            <button class="btn btn-default button-spacing" style="width:83px;" ng-click="goToEditMoviePage(movie)"><i class="far fa-edit"></i> Edit</button>
+                            <button class="btn btn-danger" ng-click="openDeleteMovieModal(movie)"><i class="far fa-trash-alt"></i> Delete</button>
                         </td>
                         <tr>
                             <td>&nbsp;</td>
@@ -221,7 +221,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger" ng-click="deleteMovie()">Delete</button>
+                    <button type="button" class="btn btn-danger" ng-click="deleteMovie()"><i class="far fa-trash-alt"></i> Delete</button>
                 </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
