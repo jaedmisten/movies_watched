@@ -93,3 +93,163 @@ A new hash was being created everytime the movie was edited.
 The row class in bootstrap has negative right and left margins of -15. Added 15px margin to main divs on these pages
 to offset the negative margins. The tables in the view movies pages have a display property of 'table' that seems to 
 offset the row class negative margins.
+
+
+11/12/18 - Updated submit button on add and edit pages to line up with left side of forms.
+
+Added extra line of text to footer to remove margin under footer on home page in firefox. May do more updates to footer.
+
+
+11/16/18 - Updated apache settings to point access and error logs to the correct locations.
+
+
+11/29/18 - Fixed issue where if scrolled down and click on a link the new page would be scrolled down.
+Used window.scroll(0, 0) every time a link is clicked.
+
+
+1/3/19 - Added search box to view movies page using angular filter. Will need to go back to making footer stay on bottom of the page.
+
+
+1/7/19 - Updated styling of search box and moved it to the right side.
+
+
+1/8/19 - Updated edit button to have the same width as the delete button. 
+Fixed line breaks not showing in description and notes sections. Needed to add the style of "whitespace: pre-line;" to their td's.
+
+
+1/9/19 - Fixed broken img if movie did not have image uploaded. Used onerror attribute in img src link to point to default image.
+Needed to switch from <img src=""> to <img ng-src=""> for this to work.
+
+
+1/10/19 - Started working on preventing adding a movie if year released field has year input in the future. Form is submitted by php
+not angular. Will need to do check in addMovie.php file and return error. Need to update site with error feedback.
+
+
+1/13/19 - Updated add movie form to not allow the year released field to have a year in the future. I did this by getting the current
+year in javascript, attaching it to a variable in scope, and then putting that variable in for the value of the max attribute in the
+form.
+
+
+1/18/19 - Started working on fix for broken image being shown on home page if one of the random selected movies did not have a image
+uploaded. Added image_uploaded column to DB table. For the front page random movies only retrieve movies if this column is true.
+
+Currently troubleshooting adding movie and updating this column. It is setting column to 1 when a movie was not uploaded.
+
+
+1/19/19 - Finished updates for adding a movie with the `image_uploaded` column. To keep this column from being true when no image 
+was uploaded I need to check that $_FILES['picture']['name'] != "". The $_FILES['picture']['name'] is always there and will have
+an empty string if nothing was uploaded.
+
+Also updated editing movie to use the `image_uploaded` column.
+
+Updated edit page to not show broken link when movie does not have image uploaded. It will show the no image available image.
+
+
+2/16/19 - Added font awesome icons for edit and delete buttons.
+
+
+2/26/19 - Started making updates to allow more than one director for a movie. 
+Updated DB schema.
+    1. Created `directors` table.
+    2. Created `directors_movies` table.
+    3. Removed `directors` column from `movies` table.
+
+The next step will be to retrieve all directors for each movie. Then display each director when displaying each movie. Will add 
+ng-repeat for directors within the ng-repeat of movies.
+
+
+2/28/19 - Made updates to retrieve all directors by looping through each movie and querying the `directors_moves` and `directors`
+table with the matching movie id in `directors_movies` table. Directors are now displayed on view movies page.  
+
+
+3/1/19 - Added list of directors to add movie page.
+
+
+3/3/19 - Updating add movie page to have array of directors sent in post request from the checkboxes selected. 
+
+After new row for the new movie is saved need to insert row in `directors_movies` table for each of the directors selected. Need 
+the new movie row id for `movie_id` column. The $stmt->execute returns 1 for true. Run query for most recenct row to get movie id?
+
+
+3/5/19 - Finished saving each director for a new movie by using lastInsertId() function to get the movie id of the last row 
+inserted into `movies` table. Looped through the array in $_POST['director'] and saved entry in `directors_movies`.
+
+Need to add ability to add new director. Need to make checking directors into scroll window with possible use of filter search.
+
+
+3/9/19 - Updated the add movie page to have the directors checkboxes section to use a vertical scroll bar by adding the 
+"overflow-y: scroll" style rule.
+
+
+3/11/19 - Added modal and form to add movie page to add a new director.
+Need to write code to save the director to `directors` table.
+
+
+3/15/19 - Created xhr call from $scope.addDirector() function to call 'addDirector.php' file to save the director to the 
+`directors` table. Needed to use the below code to get the data from the http post request because $_POST is not populated.
+
+$postData = file_get_contents("php://input");
+$request = json_decode($postData);
+if ( isset($request->first_name) ) {
+    $firstName = $request->first_name;
+}
+
+Also, updated add director modal to have the 'submit' button saved if first name and last name fields are empty.
+
+
+3/16/19 - Made updates so that after new director is saved the director is returned and added to the $scope.directors 
+variable. The new director is being added to the bottom of the list of directors. Need to sort the $scope.directors
+by the last name property of each index.
+
+
+3/17/19 - Added orderBy filter to list of directors in add movie page to put new added director in order in the list.
+Reset director data in the form by setting the $scope.director variables to empty strings after the new director is
+added.
+
+
+3/19/19 - Updated edit page to display list of directors and update the `directors_movies` table with the selected
+directors. Needed to delete any current records in the `directors_movies` table to prevent any duplicate entries
+or leaving a director connected to a movie that was incorrect.
+
+In the list of directors, need to pre select the current directors.
+
+
+3/22/19 - Made updates on edit movie page to select director in the list. Needed to use call function in controller
+to check id of current director in list with array of directors in current movie and if there was a match return 
+true to select the checkbox.
+
+
+3/24/19 - Added manage directors page that list all directors. Sorting by names is working. 
+
+Need to add filter for searching. Need to add functionality to edit and delete buttons.
+
+
+3/29/19 - Added code to delete director from `directors` table and `directors_movies` table. Code is in place
+to call deleteDirector.php file to do the deletions and open success modal or error modal. No testing has 
+been done on it yet.
+
+
+3/30/19 - Tested deleting directors. Fixed wrong rows being deleted from `directors_movies` tables.
+
+Currently after deleting director the director is still listed on the page until refreshing.
+
+For editing director, modals and angular functions have been added. Need to add edit director file to server side.
+
+
+3/31/19 - Added php code to edit the director. Currently not working there is an issue with the POST data not
+being received in the file. The payload is showing up in the HTTP request.
+
+
+4/3/19 - Fixed editing director not working. Needed to update HTTP POST request content-type to be 
+application/x-www-form-urlencoded. The content-type being used was application/json. Also, updated the postData 
+variable that sends the payload to be a string with the variables separated by &. Not sure why some of the 
+angular $http service post request work the default way. Need to research this more.
+
+
+4/4/19 - Made updates to add directors in manage directors page. Add search filter to manage directors page.
+
+
+4/6/19 - Made UI updates. Decreased the width of the add movie, edit movie, and manage directors pages by adding more
+padding on the left and right of the main divs. 
+Also, on the manage directors page I decreased the width of the last
+td that had the action buttons. This td had a lot of space to the right of the buttons. Not sure why. It was not margin.

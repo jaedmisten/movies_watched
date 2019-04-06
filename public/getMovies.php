@@ -8,19 +8,20 @@ try {
     $stmt->execute();
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    //echo '<pre>';
-    //var_dump($movies);
-    //echo '</pre>';
-    //die();
-
     for($i = 0; $i < count($movies); $i++) {
+        // Update format of `date_watched` column.
         $movies[$i]['date_watched'] = date('m-d-Y', strtotime($movies[$i]['date_watched']));
-    }
 
-    //echo '<pre>';
-    //var_dump($movies);
-    //echo '</pre>';
-    //die();
+        // Get director(s) for current movie.
+        $sql = 'SELECT dm.*, d.*
+                FROM `directors_movies` dm
+                INNER JOIN `directors` d ON dm.directors_id = d.id
+                WHERE dm.movies_id = ?';
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$movies[$i]['id']]);
+        $directors = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $movies[$i]['directors'] = $directors;
+    }
     
     echo json_encode($movies);
 } catch (PDOException $e) {

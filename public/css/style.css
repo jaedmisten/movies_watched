@@ -7,13 +7,13 @@ body {
 }
 
 #add-movie {
-    margin-left: 15px;
-    margin-right: 15px;
+    padding-left: 175px;
+    padding-right: 175px;
 }
 
 #edit-movie {
-    margin-left: 15px;
-    margin-right: 15px;
+    padding-left: 175px;
+    padding-right: 175px;
 }
 
 #title-header {
@@ -71,4 +71,9 @@ body {
 
 #random-movies-table td {
     padding: 50px;
+}
+
+#manage-directors {
+    padding-left: 150px;
+    padding-right: 150px;
 }

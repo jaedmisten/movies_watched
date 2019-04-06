@@ -1,0 +1,2 @@
+ErrorDocument 404 /error_documents/404.php
+ErrorDocument 500 "You broke the website!"

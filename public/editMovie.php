@@ -19,7 +19,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         // Movie id needs to be available or issues with the update can occur.
         die('There was an error. Please try agan.');
     }
-    $id = $_POST['id'];
+    $movieId = $_POST['id'];
     if ( isset($_POST['title']) ) {
         $title = trim($_POST['title']);
     }
@@ -29,9 +29,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['notes']) && $_POST['notes'] !== '' ) {
         $notes = trim($_POST['notes']);
     }
+    /*
     if ( isset($_POST['director']) ) {
         $director = trim($_POST['director']);
     }
+    */
     if ( isset($_POST['year_released']) ) {
         $yearReleased = $_POST['year_released'];
     }
@@ -42,7 +44,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $hash = $_POST['hash'];
     }
     if ( isset($_FILES['picture']) && $_FILES['picture']['name'] != "" ) {
-        $imageUpdloaded = true;
+        $imageUploaded = true;
 
         // Handle uploaded picture.
         $currentDir = getcwd();
@@ -56,18 +58,35 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     }
        
     try {
-        if ($imageUpdloaded) {
-            $sql = 'UPDATE movies SET `title` = ?, `description` = ?, `notes` = ?, `director` = ?, `image_uploaded` = ? ,  `date_watched` = ?, `year_released` = ? 
-                WHERE `id` = ?';
+        if ($imageUploaded) {
+            $sql = 'UPDATE movies 
+                    SET `title` = ?, `description` = ?, `notes` = ?, `image_uploaded` = ? ,  `date_watched` = ?, `year_released` = ? 
+                    WHERE `id` = ?';
         } else  {
-            $sql = 'UPDATE movies SET `title` = ?, `description` = ?, `notes` = ?, `director` = ?, `date_watched` = ?, `year_released` = ? 
-                WHERE `id` = ?';
+            $sql = 'UPDATE movies 
+                    SET `title` = ?, `description` = ?, `notes` = ?, `date_watched` = ?, `year_released` = ? 
+                    WHERE `id` = ?';
         }
         $stmt = $pdo->prepare($sql);
-        if ($imageUpdloaded) {
-            $result = $stmt->execute([$title, $description, $notes, $director, $imageUpdloaded, $dateWatched, $yearReleased, $id]);
+        if ($imageUploaded) {
+            $result = $stmt->execute([$title, $description, $notes, $imageUploaded, $dateWatched, $yearReleased, $movieId]);
         } else {
-            $result = $stmt->execute([$title, $description, $notes, $director, $dateWatched, $yearReleased, $id]);
+            $result = $stmt->execute([$title, $description, $notes, $dateWatched, $yearReleased, $movieId]);
+        }
+
+        // Remove any current entries in `directors_movies` for this movie to avoid duplicates or keeping incorrect directors.
+        $sql = 'DELETE FROM directors_movies WHERE `movies_id` = ?';
+        $stmt = $pdo->prepare($sql);
+        $result = $stmt->execute([$movieId]);
+
+        // Save each director for movie to `directors_movies` table.
+        if (!empty($_POST['director'])) {
+            $numDirectors = count($_POST['director']);
+            for ($i = 0; $i < $numDirectors; $i++) {
+                $sql = 'INSERT INTO directors_movies (`directors_id`, `movies_id`) VALUES (?, ?)';
+                $stmt = $pdo->prepare($sql);
+                $result = $stmt->execute([$_POST['director'][$i], $movieId]);
+            }
         }
         
 

@@ -9,8 +9,10 @@ include '../config/connect.php';
 //echo '<br><br>';
 /*
 echo '<pre>';
-print_r($_FILES);
+print_r($_POST);
 echo '</pre>';
+*/
+/*
 echo '<pre>';
 var_dump($_FILES);
 echo '</pre>';
@@ -29,9 +31,11 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['notes']) && $_POST['notes'] !== '' ) {
         $notes = trim($_POST['notes']);
     }
+    /*
     if ( isset($_POST['director']) ) {
         $director = trim($_POST['director']);
     }
+    */
     if ( isset($_POST['year_released']) ) {
         $yearReleased = $_POST['year_released'];
     }
@@ -54,10 +58,27 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     }
        
     try {
-        $sql = 'INSERT INTO movies (`title`, `description`, `notes`, `director`, `hash`, `image_uploaded`, `date_watched`, `year_released`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+        // Save new movie
+        $sql = 'INSERT INTO movies (`title`, `description`, `notes`, `hash`, `image_uploaded`, `date_watched`, `year_released`) VALUES (?, ?, ?, ?, ?, ?, ?)';
         $stmt = $pdo->prepare($sql);
-        $result = $stmt->execute([$title, $description, $notes, $director, $hash, $imageUploaded, $dateWatched, $yearReleased]);
+        $result = $stmt->execute([$title, $description, $notes, $hash, $imageUploaded, $dateWatched, $yearReleased]);
+        $newMovieId = $pdo->lastInsertId();
 
+        // Save each director for movie to `directors_movies` table.
+        if (!empty($_POST['director'])) {
+            $numDirectors = count($_POST['director']);
+            for ($i = 0; $i < $numDirectors; $i++) {
+                $sql = 'INSERT INTO directors_movies (`directors_id`, `movies_id`) VALUES (?, ?)';
+                $stmt = $pdo->prepare($sql);
+                $result = $stmt->execute([$_POST['director'][$i], $newMovieId]);
+            }
+        }
+        /*
+        echo '<pre>';
+        print_r($result);
+        echo '</pre>';
+        die();
+        */
         $movieInserted = true;
         header('Location: index.php');
     } catch (PDOException $e) {
