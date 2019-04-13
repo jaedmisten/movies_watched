@@ -77,3 +77,11 @@ body {
     padding-left: 150px;
     padding-right: 150px;
 }
+
+.add-directors-dev {
+    background-color: white;
+    width: 375px;
+    height: 180px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+}

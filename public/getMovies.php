@@ -10,7 +10,7 @@ try {
 
     for($i = 0; $i < count($movies); $i++) {
         // Update format of `date_watched` column.
-        $movies[$i]['date_watched'] = date('m-d-Y', strtotime($movies[$i]['date_watched']));
+        $movies[$i]['date_watched'] = date('Y-m-d', strtotime($movies[$i]['date_watched']));
 
         // Get director(s) for current movie.
         $sql = 'SELECT dm.*, d.*

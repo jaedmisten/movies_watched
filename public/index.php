@@ -42,14 +42,13 @@
                     <label>Director</label><br>
                     Please select the director of this movie. Multiple directors can be see selected.
                     <br>
-                    <div style="background-color:white;width:425px;height:180px;overflow-y:scroll;">
+                    <div class="add-directors-dev">
                         <div style="margin-left:5px;">
                             <span ng-repeat="director in directors | orderBy:'last_name'">
                                 <input type="checkbox" name="director[]" value="[[director.id]]"> [[director.first_name]] [[director.middle_name]] [[director.last_name]]<br>
                             </span>
                         </div>
                     </div>
-                    <br>
                     Do not see the director of this movie in the list? Click the following link to add him or her: 
                     <a href="" ng-click="openAddDirectorModal()">Add Director</a>
                 </div>
@@ -197,14 +196,13 @@
                     <label>Director</label><br>
                     Please select the director of this movie. Multiple directors can be see selected.
                     <br>
-                    <div style="background-color:white;width:425px;height:180px;overflow-y:scroll;">
+                    <div class="add-directors-dev">
                         <div style="margin-left:5px;">
                             <span ng-repeat="director in directors | orderBy:'last_name'">
                                 <input type="checkbox" name="director[]" value="[[director.id]]" ng-checked="checkDirector(director.id)"> [[director.first_name]] [[director.middle_name]] [[director.last_name]]<br>
                             </span>
                         </div>
                     </div>
-                    <br>
                     Do not see the director of this movie in the list? Click the following link to add him or her: 
                     <a href="" ng-click="openAddDirectorModal()">Add Director</a>
                 </div>
