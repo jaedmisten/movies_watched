@@ -253,3 +253,15 @@ angular $http service post request work the default way. Need to research this m
 padding on the left and right of the main divs. 
 Also, on the manage directors page I decreased the width of the last
 td that had the action buttons. This td had a lot of space to the right of the buttons. Not sure why. It was not margin.
+
+
+4/10/19 - Now when deleting movie, the row in `directors_movies` with matching `movie_id` column is also deleted.
+
+
+4/12/19 - Fixed movies not sorting by date watched by changing date format to be yyyy-mm-dd instead of mm-dd-yyyy.
+Moved styles for adding directors div into a class.
+
+
+4/25/19 - Fixed movies not sorting correctly by director. Needed to update sorting the column to:
+    ng-click="sortType='directors[0].last_name';sortReverse=!sortReverse"
+This update was needed after updating directors to be added 

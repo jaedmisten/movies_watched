@@ -128,9 +128,9 @@
                             </a>
                         </th>
                         <th style="width:175px;">
-                            <a href="#" ng-click="sortType='director';sortReverse=!sortReverse">Director
-                                <span ng-show="sortType=='director' && !sortReverse"  class="fa fa-caret-up"></span>
-                                <span ng-show="sortType=='director' && sortReverse" class="fa fa-caret-down"></span>
+                            <a href="#" ng-click="sortType='directors[0].last_name';sortReverse=!sortReverse">Director
+                                <span ng-show="sortType=='directors[0].last_name' && !sortReverse"  class="fa fa-caret-up"></span>
+                                <span ng-show="sortType=='directors[0].last_name' && sortReverse" class="fa fa-caret-down"></span>
                             </a>
                         </th>
                         <th>Description</th>
