@@ -58,7 +58,8 @@
                 </div>
                 <div class="form-group">
                     <label for="picture">Photo</label>
-                    <input type="file" id="picture" name="picture" accept="image/*">
+                    <input style="margin-bottom:4px;" type="file" id="picture" name="picture" accept="image/*" onchange="angular.element(this).scope().getImageFile(this)">
+                    <img id="movieImage" src="uploads/img/default.jpg" alt="Movie Image" width="70">
                 </div>
                 <div class="form-group">
                     <label for="date_watched">Date Watched</label>

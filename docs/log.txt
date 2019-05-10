@@ -265,3 +265,16 @@ Moved styles for adding directors div into a class.
 4/25/19 - Fixed movies not sorting correctly by director. Needed to update sorting the column to:
     ng-click="sortType='directors[0].last_name';sortReverse=!sortReverse"
 This update was needed after updating directors to be added 
+
+
+5/5/19 - Researched using JS FileReader object to display selected image files on the add movie page.
+
+
+5/9/19 - Updated add movie form to show image that was selected. Needed to use onchange javascript function in the 
+input file tag to call an angular function. Needed to use onchange="angular.element(this).scope().getImageFile(this)"
+instead of ng-change because angular does not have a binding for ng-change and the action of selecting a file (file uploaded
+control). There is some issue where this option only works in debug mode so I will need to research this more. 
+
+The angular function uses the JS FileReader object to read the contents of the image file and then jquery is used to 
+update the src attribute of the img tag.
+

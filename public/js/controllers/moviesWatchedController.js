@@ -351,5 +351,20 @@ function ($scope, $http, $window) {
         );  
     };
 
+    $scope.getImageFile = function(input) {
+        console.log('getFile called');
+        console.log(input);
+        console.log(input.files)
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#movieImage').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+
 
  }]);
