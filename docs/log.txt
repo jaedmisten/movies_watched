@@ -278,3 +278,21 @@ control). There is some issue where this option only works in debug mode so I wi
 The angular function uses the JS FileReader object to read the contents of the image file and then jquery is used to 
 update the src attribute of the img tag.
 
+
+5/10/19 - Made updates to edit movie page for image displayed to be updated when new image is selected.
+
+Trying to remove the "No File Chosen" message when page is loaded and then update with filename after selecting a file. Currently
+The color of the input tag is transparent to not show "No File Chosen" on loading and jquery is used before updating image to
+update the css color property of the input tag to black. Right now the first image change does not display the filename any later
+image changes will correctly update the color to show the filename. May need to use $apply or $digest in angular to immediately
+update the color.
+
+
+5/11/19 - Continued working on edit movie page when selecting an image.
+
+
+5/12/19 - Completed updates to edit movie page for selecting an image. Now text next to photo button that said "No File Chosen"
+in Chrome or Firefox now is set to transparent color by default to not be visible. As soon as the button is clicked a function
+is called that uses jquery to update the color to black to show the text. The onchange event is then called to update the image
+on the page to the image that is selected. If selecting a file is canceled, the "No File Chosen" message remains.
+

@@ -351,8 +351,8 @@ function ($scope, $http, $window) {
         );  
     };
 
-    $scope.getImageFile = function(input) {
-        console.log('getFile called');
+    $scope.getAddMoviePhotoFile = function(input) {
+        console.log('getAddMoviePhotoFile called');
         console.log(input);
         console.log(input.files)
 
@@ -360,11 +360,34 @@ function ($scope, $http, $window) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                $('#movieImage').attr('src', e.target.result);
+                // Update img tag to have src attribute use selected image file.
+                $('#add-movie-photo').attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
         }
     };
+
+    $scope.updateEditMoviePhotoFile = function(input) {
+        console.log('updateEditMoviePhotoFile called');
+        console.log(input);
+        console.log(input.files)
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Update img tag to have src attribute use selected image file.
+                angular.element('#edit-movie-photo').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+
+    $scope.updateEditMoviePhotoText = function() {
+        // Update input tag color propery so that file name is shown. 
+        // By default the color property is set to transparent to not show "No file Chosen" next to input file tag.
+        angular.element('#edit-movie-photo-file').css('color', 'black');
+    }
 
 
  }]);

@@ -58,8 +58,8 @@
                 </div>
                 <div class="form-group">
                     <label for="picture">Photo</label>
-                    <input style="margin-bottom:4px;" type="file" id="picture" name="picture" accept="image/*" onchange="angular.element(this).scope().getImageFile(this)">
-                    <img id="movieImage" src="uploads/img/default.jpg" alt="Movie Image" width="70">
+                    <input style="margin-bottom:4px;" type="file" id="picture" name="picture" accept="image/*" onchange="angular.element(this).scope().getAddMoviePhotoFile(this)">
+                    <img id="add-movie-photo" src="uploads/img/default.jpg" alt="Movie Photo" width="70">
                 </div>
                 <div class="form-group">
                     <label for="date_watched">Date Watched</label>
@@ -200,7 +200,8 @@
                     <div class="add-directors-dev">
                         <div style="margin-left:5px;">
                             <span ng-repeat="director in directors | orderBy:'last_name'">
-                                <input type="checkbox" name="director[]" value="[[director.id]]" ng-checked="checkDirector(director.id)"> [[director.first_name]] [[director.middle_name]] [[director.last_name]]<br>
+                                <input type="checkbox" name="director[]" value="[[director.id]]" ng-checked="checkDirector(director.id)"> [[director.first_name]] [[director.middle_name]] [[director.last_name]]
+                                <br>
                             </span>
                         </div>
                     </div>
@@ -212,10 +213,11 @@
                     <input type="number" id="year_released" name="year_released" class="form-control" min="1900" max="2099" ng-model="movie.year_released">
                 </div>
                 <div class="form-group">
-                    <label for="picture">Photo</label>
-                    <input type="file" id="picture" name="picture" accept="image/*">
-                    <img style="margin-top:5px;" ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'"  
-                                    alt="[[movie.title + ' Picture']]" title="[[movie.title + ' Picture']]" width="70">
+                    <label for="edit-movie-picture">Photo</label>
+                    <input type="file" id="edit-movie-photo-file" name="picture" accept="image/*" title=""
+                                    onchange="angular.element(this).scope().updateEditMoviePhotoFile(this)" ng-click="updateEditMoviePhotoText()">
+                    <img id="edit-movie-photo" style="margin-top:5px;" ng-src="[['uploads/img/' + movie.hash + '.jpg']]" onerror="this.src='uploads/img/default.jpg'"  
+                                    alt="[[movie.title + ' Photo']]" title="[[movie.title + ' Photo']]" width="70">
                 </div>
                 <div class="form-group">
                     <label for="date_watched">Date Watched</label>
