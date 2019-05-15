@@ -296,3 +296,9 @@ in Chrome or Firefox now is set to transparent color by default to not be visibl
 is called that uses jquery to update the color to black to show the text. The onchange event is then called to update the image
 on the page to the image that is selected. If selecting a file is canceled, the "No File Chosen" message remains.
 
+
+5/13/19 - Added a bunch of movies to test displaying image photo on add movie and edit movie page. Found no issues.
+
+
+5/14/19 - Removed margin-bottom of 25px from #header id selector. That margin was not needed. There is 10px margin-bottom from
+the h1 selector from bootstrap.
