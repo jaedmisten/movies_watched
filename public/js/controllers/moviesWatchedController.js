@@ -7,6 +7,7 @@ function ($scope, $http, $window) {
     $scope.viewMoviesPagePhp = false;
     $scope.editMoviePage = false;
     $scope.manageDirectorsPage = false;
+    $scope.reportsPage = false;
     $scope.movie = {};
     $scope.sortType = 'title';
     $scope.sortReverse = false;
@@ -49,6 +50,7 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = false;
+                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
@@ -63,6 +65,7 @@ function ($scope, $http, $window) {
         $scope.viewMoviesPagePhp = false;
         $scope.editMoviePage = false;
         $scope.manageDirectorsPage = false;
+        $scope.reportsPage = false;
 
         $http.get('/getMovies.php').then(
             function(response) {
@@ -103,6 +106,7 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = true;        
                 $scope.manageDirectorsPage = false;
+                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
@@ -120,6 +124,7 @@ function ($scope, $http, $window) {
         $scope.viewMoviesPagePhp = true;
         $scope.editMoviePage = false;
         $scope.manageDirectorsPage = false;
+        $scope.reportsPage = false;
     };
  
     $scope.goToManageDirectorsPage = function() {
@@ -142,10 +147,23 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = true;
+                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
         );
+    };
+
+    $scope.goToReportsPage = function() {
+        console.log('goToReportPage called');
+        window.scroll(0, 0);
+        $scope.homePage = false;
+        $scope.addMoviePage = false;
+        $scope.viewMoviesPage = false;
+        $scope.viewMoviesPagePhp = false;
+        $scope.editMoviePage = false;
+        $scope.manageDirectorsPage = false;
+        $scope.reportsPage = true;
     };
 
     $scope.addMovie = function() {
@@ -387,7 +405,11 @@ function ($scope, $http, $window) {
         // Update input tag color propery so that file name is shown. 
         // By default the color property is set to transparent to not show "No file Chosen" next to input file tag.
         angular.element('#edit-movie-photo-file').css('color', 'black');
-    }
+    };
+
+    $scope.exportToCSV = function() {
+        console.log('exportToCSV called');
+    };
 
 
  }]);

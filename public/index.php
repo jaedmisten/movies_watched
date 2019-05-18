@@ -7,7 +7,8 @@
             <button class="btn btn-default" ng-click="goToAddMoviePage()">Add Movie</button><br><br>
             <button class="btn btn-default" ng-click="goToViewMoviesPage()">View Movies Watched</button><br><br>
             <button class="btn btn-default" ng-click="goToViewMoviesPagePhp()">View Movies Watched (PHP)</button><br><br>
-            <button class="btn btn-default" ng-click="goToManageDirectorsPage()">Manage Directors</button>
+            <button class="btn btn-default" ng-click="goToManageDirectorsPage()">Manage Directors</button><br><br>
+            <button class="btn btn-default" ng-click="goToReportsPage()">Reports Page</button>
             <table id="random-movies-table">
                 <tr ng-show="randomMovieHashes.length >= 3">
                     <td><img src="[['uploads/img/' + randomMovieHashes[0] + '.jpg']]" width="100"></td>
@@ -232,6 +233,7 @@
             <br>
         </div>
 
+        <!-- Manage directors section -->
         <div id="manage-directors" ng-if="manageDirectorsPage">
             <div class="page-title">MANAGE DIRECTORS</div>
             <form class="form-inline" style="float:right;margin-bottom:30px;">
@@ -279,6 +281,14 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- Reports section. -->
+        <div id="reports" ng-if="reportsPage">
+            <div class="page-title">REPORTS AND STATISTICS</div>
+            <div style="text-align: center;">
+                Export Movies Watched To CSV: <button style="btn btn-default" ng-click="exportToCSV()">Export</button>
+            </div>
         </div>
 
         <!-- Delete movie modal -->

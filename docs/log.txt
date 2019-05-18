@@ -302,3 +302,6 @@ on the page to the image that is selected. If selecting a file is canceled, the 
 
 5/14/19 - Removed margin-bottom of 25px from #header id selector. That margin was not needed. There is 10px margin-bottom from
 the h1 selector from bootstrap.
+
+
+5/18/19 - Add reports page. This will be updated later with export movies watched to spreadsheet and other various reports or stats.
