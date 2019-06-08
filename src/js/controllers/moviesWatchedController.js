@@ -9,15 +9,12 @@ function ($scope, $http, $window) {
     $scope.manageDirectorsPage = false;
     $scope.reportsPage = false;
     $scope.movie = {};
-    $scope.sortType = 'title';
-    $scope.sortReverse = false;
+    $scope.sortType = 'date_watched';
+    $scope.sortReverse = true;
     $scope.directorSortType = 'last_name';
     $scope.directorSortReverse = false;
     $scope.addDirectorStatus = false;
     $scope.currentYear = (new Date()).getFullYear();
-    console.log('currentYear: ', $scope.currentYear);
-
-    console.log('moviesWatchedController called and updated');
     
     $scope.goToHomePage = function() {
         console.log('goToHomePage called')

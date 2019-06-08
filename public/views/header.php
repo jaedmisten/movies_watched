@@ -15,8 +15,11 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Angular -->
     <script src="js/angular/angular.js"></script>
+    <!--
     <script src="js/app.js"></script>
     <script src="js/controllers/moviesWatchedController.js"></script>
+    -->
+    <script src="dist/main.js"></script>
     <!-- bootstrap-datepicker -->
     <script src="js/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" href="js/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css">

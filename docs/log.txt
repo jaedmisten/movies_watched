@@ -304,4 +304,12 @@ on the page to the image that is selected. If selecting a file is canceled, the 
 the h1 selector from bootstrap.
 
 
-5/18/19 - Add reports page. This will be updated later with export movies watched to spreadsheet and other various reports or stats.
+5/18/19 - Added reports page. This will be updated later with export movies watched to spreadsheet and other various reports or stats.
+
+
+6/1/19 - Set up gulp to concat files in /src/js/* files to /public/dist/main.js file. Setup gulp watch to do this automatically. 
+Also, made a gulp task to minify the concatenated files. The concatenation and minification are working, but the webpage does
+not load with the minified version.
+
+
+6/2/19 - Changed sort type to be date watched with sortReverse variable set to true to show most recently watched movies first.
