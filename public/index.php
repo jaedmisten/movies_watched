@@ -1,6 +1,7 @@
+<?php ini_set('display_errors', 0); ?>
 <?php include '../config/connect.php' ?>
 <?php include 'addMovie.php' ?>
-<?php include 'views/header.php'; ?>
+<?php include 'views/headera.php'; ?>
 
         <!-- home -->
         <div id="home" ng-if="homePage" ng-init="getRandomMovies()" style="text-align: center;">

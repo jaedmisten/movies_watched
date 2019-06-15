@@ -26,8 +26,6 @@
 </head>
 
 <body>
-<?php ini_set('display_errors', 0); ?>
-<?php edho(); ?>
 
 <div class="container-fluid">
     <div class="row">
