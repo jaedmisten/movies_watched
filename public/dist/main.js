@@ -1,9 +1,16 @@
+// Module
+var moviesWatchedApp = angular.module('moviesWatchedApp', [], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
 // Controller
 moviesWatchedApp.controller('moviesWatchedController', ['$scope', '$http', '$window', 
 function ($scope, $http, $window) {
     $scope.homePage = true;
     $scope.addMoviePage = false;
     $scope.viewMoviesPage = false;
+    $scope.viewMoviesPagePhp = false;
     $scope.editMoviePage = false;
     $scope.manageDirectorsPage = false;
     $scope.reportsPage = false;
@@ -16,7 +23,15 @@ function ($scope, $http, $window) {
     $scope.currentYear = (new Date()).getFullYear();
     
     $scope.goToHomePage = function() {
+        console.log('goToHomePage called')
         $window.location.href = '/';
+        /*
+        $scope.homePage = true;
+        $scope.addMoviePage = false;
+        $scope.viewMoviesPage = false;
+        $scope.viewMoviesPagePhp = false;
+        $scope.editMoviePage = false;
+        */
     };
 
     $scope.goToAddMoviePage = function() {
@@ -35,6 +50,7 @@ function ($scope, $http, $window) {
                 $scope.homePage = false;
                 $scope.addMoviePage = true;
                 $scope.viewMoviesPage = false;
+                $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = false;
                 $scope.reportsPage = false;
@@ -49,6 +65,7 @@ function ($scope, $http, $window) {
         $scope.homePage = false;
         $scope.addMoviePage = false;
         $scope.viewMoviesPage = true;
+        $scope.viewMoviesPagePhp = false;
         $scope.editMoviePage = false;
         $scope.manageDirectorsPage = false;
         $scope.reportsPage = false;
@@ -89,6 +106,7 @@ function ($scope, $http, $window) {
                 $scope.homePage = false;
                 $scope.addMoviePage = false;
                 $scope.viewMoviesPage = false;
+                $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = true;        
                 $scope.manageDirectorsPage = false;
                 $scope.reportsPage = false;
@@ -98,6 +116,18 @@ function ($scope, $http, $window) {
         );
 
         
+    };
+
+    $scope.goToViewMoviesPagePhp = function() {
+        console.log('goToViewMoviesPage called');
+        window.scroll(0, 0);
+        $scope.homePage = false;
+        $scope.addMoviePage = false;
+        $scope.viewMoviesPage = false;
+        $scope.viewMoviesPagePhp = true;
+        $scope.editMoviePage = false;
+        $scope.manageDirectorsPage = false;
+        $scope.reportsPage = false;
     };
  
     $scope.goToManageDirectorsPage = function() {
@@ -117,6 +147,7 @@ function ($scope, $http, $window) {
                 $scope.homePage = false;
                 $scope.addMoviePage = false;
                 $scope.viewMoviesPage = false;
+                $scope.viewMoviesPagePhp = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = true;
                 $scope.reportsPage = false;
@@ -132,6 +163,7 @@ function ($scope, $http, $window) {
         $scope.homePage = false;
         $scope.addMoviePage = false;
         $scope.viewMoviesPage = false;
+        $scope.viewMoviesPagePhp = false;
         $scope.editMoviePage = false;
         $scope.manageDirectorsPage = false;
         $scope.reportsPage = true;
@@ -253,7 +285,7 @@ function ($scope, $http, $window) {
             return false;
         }
         
-        // Loop through list of movie's directors.
+        // Loop through list of movie's directors
         // Return true if current director in director list is a director of movie.
         // Returning true will select the director checkbox.
         for (var i = 0; i < $scope.movie.directors.length; i++) {

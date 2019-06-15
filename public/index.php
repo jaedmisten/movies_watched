@@ -6,7 +6,6 @@
         <div id="home" ng-if="homePage" ng-init="getRandomMovies()" style="text-align: center;">
             <button class="btn btn-default" ng-click="goToAddMoviePage()">Add Movie</button><br><br>
             <button class="btn btn-default" ng-click="goToViewMoviesPage()">View Movies Watched</button><br><br>
-            <button class="btn btn-default" ng-click="goToViewMoviesPagePhp()">View Movies Watched (PHP)</button><br><br>
             <button class="btn btn-default" ng-click="goToManageDirectorsPage()">Manage Directors</button><br><br>
             <button class="btn btn-default" ng-click="goToReportsPage()">Reports Page</button>
             <table id="random-movies-table">
@@ -59,7 +58,8 @@
                 </div>
                 <div class="form-group">
                     <label for="picture">Photo</label>
-                    <input style="margin-bottom:4px;" type="file" id="picture" name="picture" accept="image/*" onchange="angular.element(this).scope().getAddMoviePhotoFile(this)">
+                    <input style="margin-bottom:4px;" type="file" id="picture" name="picture" accept="image/*" 
+                           onchange="angular.element(this).scope().getAddMoviePhotoFile(this)">
                     <img id="add-movie-photo" src="uploads/img/default.jpg" alt="Movie Photo" width="70">
                 </div>
                 <div class="form-group">
@@ -72,42 +72,6 @@
                     <button class="btn btn-default" ng-click="goToHomePage()">Cancel</button>
                 </div>
             </form>
-        </div>
-
-        <!-- View movies section using php query instead of angular. -->
-        <div id="view-movies-php" ng-if="viewMoviesPagePhp">
-            <div class="page-title">WATCHED MOVIES LIST (PHP)</div>
-            <?php 
-                
-                try {
-                    $sql = 'SELECT * FROM movies ORDER BY date_watched DESC';
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute();
-                    $movies = $stmt->fetchAll();
-                } catch (PDOException $e) {
-                    echo 'IT FAILED!!!<br><br>';
-                    echo '<pre>';
-                    var_dump($e);
-                    echo '</pre>';
-                    echo $e->getMessage();
-                }
-            
-            ?>
-            <?php foreach($movies as $movie) : ?>
-            <ul style="text-align: center;">
-                <li style="list-style-type: none;">
-                    <b><span style="font-size:25px;"><?php echo $movie['title']; ?><span></b><br>
-                    <b>Director:</b> <?php echo $movie['director']; ?><br><br>
-                    <b>Description:</b> <?php echo $movie['description'] ?><br><br>
-                    <b>Notes:</b> <?php echo isset($movie['notes']) ? $movie['notes'] : 'No notes were entered.'; ?><br><br>
-                    <b>Date Watched:</b> <?php echo date('m-d-Y', strtotime($movie['date_watched'])); ?><br><br>
-                    <img src="<?php echo "uploads/img/" . $movie['hash'] . ".jpg"; ?>" 
-                            alt="<?php echo $movie['title'] . ' Picture'; ?>"  
-                            title="<?php echo $movie['title'] . ' Picture'; ?>" width="160">
-                    <hr>
-                </li>
-            </ul>
-            <?php endforeach ?>
         </div>
 
         <!-- View movies section using angular. -->

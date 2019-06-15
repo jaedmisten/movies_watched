@@ -313,3 +313,11 @@ not load with the minified version.
 
 
 6/2/19 - Changed sort type to be date watched with sortReverse variable set to true to show most recently watched movies first.
+
+
+6/9/19 - Selecting dates on edit page is incorrect. Shows correct date, but when selecting the date picker comes up at 
+random times. Clicking away changes date to wrong time.
+This probably happened when changing the date format shown on view movies page to fix sorting being incorrect.
+
+
+6/14/19 - Removed fake contact email from footer. Removed view movies by php query instead of angular div.
