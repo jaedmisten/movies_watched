@@ -6,7 +6,6 @@ function ($scope, $http, $window) {
     $scope.viewMoviesPage = false;
     $scope.editMoviePage = false;
     $scope.manageDirectorsPage = false;
-    $scope.reportsPage = false;
     $scope.movie = {};
     $scope.sortType = 'date_watched';
     $scope.sortReverse = true;
@@ -37,7 +36,6 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPage = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = false;
-                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
@@ -51,8 +49,6 @@ function ($scope, $http, $window) {
         $scope.viewMoviesPage = true;
         $scope.editMoviePage = false;
         $scope.manageDirectorsPage = false;
-        $scope.reportsPage = false;
-
         $http.get('/getMovies.php').then(
             function(response) {
                 console.log('Success Callback');
@@ -91,7 +87,6 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPage = false;
                 $scope.editMoviePage = true;        
                 $scope.manageDirectorsPage = false;
-                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
@@ -119,22 +114,10 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPage = false;
                 $scope.editMoviePage = false;
                 $scope.manageDirectorsPage = true;
-                $scope.reportsPage = false;
             }, function() {
                 console.log('Error callback');
             }
         );
-    };
-
-    $scope.goToReportsPage = function() {
-        console.log('goToReportPage called');
-        window.scroll(0, 0);
-        $scope.homePage = false;
-        $scope.addMoviePage = false;
-        $scope.viewMoviesPage = false;
-        $scope.editMoviePage = false;
-        $scope.manageDirectorsPage = false;
-        $scope.reportsPage = true;
     };
 
     $scope.addMovie = function() {
