@@ -1,15 +1,6 @@
 <?php
 
 include '../config/connect.php';
-/*
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
-
-echo '<pre>';
-var_dump($_POST['movieId']);
-echo '</pre>';
-*/
 
 $movieId = $_POST['movieId'];
 

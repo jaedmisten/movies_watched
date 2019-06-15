@@ -321,3 +321,6 @@ This probably happened when changing the date format shown on view movies page t
 
 
 6/14/19 - Removed fake contact email from footer. Removed view movies by php query instead of angular div.
+
+
+6/15/19 - Removed reports page, console.log messages, and unneeded comments in server side code.

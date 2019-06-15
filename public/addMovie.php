@@ -1,25 +1,6 @@
 <?php
 
-//echo "addMovie.php called<br><br>";
-
 include '../config/connect.php';
-
-//var_dump($pdo);
-
-//echo '<br><br>';
-/*
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-*/
-/*
-echo '<pre>';
-var_dump($_FILES);
-echo '</pre>';
-echo "name: " . $_FILES['picture']['name'];
-echo "<br>type: " . gettype($_FILES['picture']['name']);
-*/
-//die();
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['title']) ) {
@@ -31,11 +12,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['notes']) && $_POST['notes'] !== '' ) {
         $notes = trim($_POST['notes']);
     }
-    /*
-    if ( isset($_POST['director']) ) {
-        $director = trim($_POST['director']);
-    }
-    */
+
     if ( isset($_POST['year_released']) ) {
         $yearReleased = $_POST['year_released'];
     }
@@ -73,12 +50,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
                 $result = $stmt->execute([$_POST['director'][$i], $newMovieId]);
             }
         }
-        /*
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
-        die();
-        */
+        
         $movieInserted = true;
         header('Location: index.php');
     } catch (PDOException $e) {

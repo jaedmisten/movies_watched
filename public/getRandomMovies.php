@@ -8,11 +8,6 @@ try {
     $stmt->execute();
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    //echo '<pre>';
-    //var_dump($movies);
-    //echo '</pre>';
-    //die();
-
     $numMovies = count($movies);
     if ( $numMovies >= 3 ) {
         $randomMovieHashes = [];

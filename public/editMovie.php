@@ -1,17 +1,5 @@
 <?php
 
-//echo "Edit movie page";
-/*
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
-echo '<pre>';
-print_r($_FILES);
-echo '</pre>';
-*/
-//die();
-
-
 include '../config/connect.php';
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
@@ -29,11 +17,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     if ( isset($_POST['notes']) && $_POST['notes'] !== '' ) {
         $notes = trim($_POST['notes']);
     }
-    /*
-    if ( isset($_POST['director']) ) {
-        $director = trim($_POST['director']);
-    }
-    */
     if ( isset($_POST['year_released']) ) {
         $yearReleased = $_POST['year_released'];
     }

@@ -1,19 +1,5 @@
 <?php
 
-//echo "Edit director page";
-/*
-echo '<pre>';
-var_dump($_SERVER);
-echo '</pre>';
-*/
-/*
-echo '<pre>';
-var_dump($_POST);
-echo '</pre>';
-*/
-//die();
-
-
 include '../config/connect.php';
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {

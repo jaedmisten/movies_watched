@@ -2,7 +2,7 @@
 
 $x = 10;
 echo $x;
-echo 'wtf';
+echo 'what';
 //var_dump($x);
 
 //return $x;
