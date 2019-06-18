@@ -5,15 +5,12 @@ include '../config/connect.php';
 $movieId = $_POST['movieId'];
 
 try {
+    // Delete the selected movie.
     $sql = "DELETE FROM movies WHERE `id` = ?";
     $stmt = $pdo->prepare($sql);
     $result = $stmt->execute([$movieId]);
 
-    /*
-     * Need to also delete rows in `directors_movies` that have same movie id 
-     * in `movies_id` column.
-     * 
-     */
+    // Delete rows from directors_movies table for the selected movie.
     $sql = "DELETE FROM directors_movies WHERE `movies_id` = ?";
     $stmt = $pdo->prepare($sql);
     $result2 = $stmt->execute([$movieId]);
