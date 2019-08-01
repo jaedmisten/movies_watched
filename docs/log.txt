@@ -264,7 +264,7 @@ Moved styles for adding directors div into a class.
 
 4/25/19 - Fixed movies not sorting correctly by director. Needed to update sorting the column to:
     ng-click="sortType='directors[0].last_name';sortReverse=!sortReverse"
-This update was needed after updating directors to be added 
+This update was needed after updating directors to be added.
 
 
 5/5/19 - Researched using JS FileReader object to display selected image files on the add movie page.
@@ -324,3 +324,8 @@ This probably happened when changing the date format shown on view movies page t
 
 
 6/15/19 - Removed reports page, console.log messages, and unneeded comments in server side code.
+
+
+6/18/19 - Removed vendor folder from git. Use 'git rm -r --cached vendor' command and added vendor folder to .gitignore file.
+
+8/1/19 - Removed unused movies class file.
