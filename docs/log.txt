@@ -317,7 +317,7 @@ not load with the minified version.
 
 6/9/19 - Selecting dates on edit page is incorrect. Shows correct date, but when selecting the date picker comes up at 
 random times. Clicking away changes date to wrong time.
-This probably happened when changing the date format shown on view movies page to fix sorting being incorrect.
+This probably happened when changing the date format shown on view movies page to "2019-04-21" to fix sorting being incorrect.
 
 
 6/14/19 - Removed fake contact email from footer. Removed view movies by php query instead of angular div.
@@ -328,4 +328,13 @@ This probably happened when changing the date format shown on view movies page t
 
 6/18/19 - Removed vendor folder from git. Use 'git rm -r --cached vendor' command and added vendor folder to .gitignore file.
 
+
 8/1/19 - Removed unused movies class file.
+
+
+8/12/19 - Looked into error with selecting date on edit page being incorrect. Date picker uses "mm/dd/yyyy" format. 
+View movies page changes date format to "yyyy-mm-dd" for correct sorting. 
+
+
+11/24/19 - Fixed error with edit page having wrong date when selecting the date picker. Made changes so that when the edit
+button for a movie is click, the date watched string is changed from "yyyy-mm-dd" to "mm/dd/yyyy".

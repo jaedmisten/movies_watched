@@ -12,7 +12,6 @@ function ($scope, $http, $window) {
     $scope.directorSortType = 'last_name';
     $scope.directorSortReverse = false;
     $scope.addDirectorStatus = false;
-    $scope.currentYear = (new Date()).getFullYear();
     
     $scope.goToHomePage = function() {
         $window.location.href = '/';
@@ -54,7 +53,6 @@ function ($scope, $http, $window) {
         window.scroll(0, 0);
         $scope.movie = movie;
         $scope.movie.year_released = parseInt($scope.movie.year_released);
-        $scope.movie.date_watched = $scope.movie.date_watched.replace(/-/g, '/');
 
         // Get the list of directors.
         $http.get('/getDirectors.php').then(
@@ -66,12 +64,14 @@ function ($scope, $http, $window) {
                 $scope.viewMoviesPage = false;
                 $scope.editMoviePage = true;        
                 $scope.manageDirectorsPage = false;
+
+                // Change format of date string from "yyyy-mm-dd" to "mm/dd/yyyy".
+                var dateArray = $scope.movie.date_watched.split("-");
+                $scope.movie.date_watched = dateArray[1] + "/" + dateArray[2] + "/" + dateArray[0];
             }, function() {
                 console.log('Error callback');
             }
-        );
-
-        
+        );   
     };
  
     $scope.goToManageDirectorsPage = function() {
@@ -89,10 +89,6 @@ function ($scope, $http, $window) {
                 console.log('Error callback');
             }
         );
-    };
-
-    $scope.addMovie = function() {
-        console.log('movie: ', $scope.movie);
     };
 
     $scope.openDeleteMovieModal = function(movie) {

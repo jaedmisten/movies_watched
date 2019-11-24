@@ -68,7 +68,7 @@
                             data-provide="datepicker" data-date-end-date="0d" ng-model="date_watched" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" ng-click="addMovie()" ng-disabled="addMovieForm.$invalid">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="addMovieForm.$invalid">Submit</button>
                     <button class="btn btn-default" ng-click="goToHomePage()">Cancel</button>
                 </div>
             </form>
