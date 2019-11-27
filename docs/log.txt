@@ -338,3 +338,9 @@ View movies page changes date format to "yyyy-mm-dd" for correct sorting.
 
 11/24/19 - Fixed error with edit page having wrong date when selecting the date picker. Made changes so that when the edit
 button for a movie is click, the date watched string is changed from "yyyy-mm-dd" to "mm/dd/yyyy".
+
+Added the 'movies_watched_app-schema.sql' database schema file to the project.
+
+
+11/26/19 - Deleted unneeded files. Used "git rm --cached filename" to remove files from repo. Added files to .git/info/exclude 
+file to keep locally but not track. Updated .gitignore file.
