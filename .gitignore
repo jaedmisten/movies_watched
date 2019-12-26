@@ -1,4 +1,4 @@
-public/uploads/img/
+public/uploads/img/*.*
 nbproject
 node_modules
 vendor
