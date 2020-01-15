@@ -347,3 +347,8 @@ file to keep locally but not track. Updated .gitignore file.
 
 
 12/25/19 - Removed images files in 'public/uploads/img' from repo.
+
+1/14/20 - Fixed 'public/uploads/img' folder not being in remote repo. 
+Needed to add the following to .gitignore:
+public/uploads/img/*
+!public/uploads/img/.gitkeep
