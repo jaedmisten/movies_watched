@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-public/uploads/img/*.jpg
-=======
->>>>>>> 4eb4a62bcd20407586303ab0160afcbf081cb358
+public/uploads/img/
 nbproject
 node_modules
 vendor
