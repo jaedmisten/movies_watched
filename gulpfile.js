@@ -35,3 +35,5 @@ gulp.task('concat_uglify', function(done) {
 gulp.task('watch', function() {
 	gulp.watch('src/js/controllers/*', gulp.series('concat'));
 });
+
+exports.default = gulp.series('concat');
