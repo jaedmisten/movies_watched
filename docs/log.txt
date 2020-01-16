@@ -352,3 +352,6 @@ file to keep locally but not track. Updated .gitignore file.
 Needed to add the following to .gitignore:
 public/uploads/img/*
 !public/uploads/img/.gitkeep
+
+
+1/15/20 - Added default task to gulp.
