@@ -356,3 +356,8 @@ public/uploads/img/*
 
 
 1/15/20 - Added default task to gulp.
+
+
+5/31/21 - Fixed issue where home page could show duplicates for the random movie images. Changed query to use
+GROUP BY title to prevent duplicates of movies with same title. DISTINCT does not work if multiple columns are queried
+and only one column needs to be disctinct.
