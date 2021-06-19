@@ -375,3 +375,5 @@ array input by reference.
 I broke up the line of code to the following:
     $fileNameParts = explode('.', $_FILES['picture']['name']);
     $fileExtension = strtolower(end($fileNameParts));
+
+Made updates for when deleting a movie that movie's image file is also deleted.
