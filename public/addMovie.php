@@ -11,8 +11,9 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
     }
     if ( isset($_POST['notes']) && $_POST['notes'] !== '' ) {
         $notes = trim($_POST['notes']);
+    } else {
+        $notes = null;
     }
-
     if ( isset($_POST['year_released']) ) {
         $yearReleased = $_POST['year_released'];
     }
@@ -20,16 +21,16 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         $dateWatched = date('Y-m-d', strtotime($_POST['date_watched']));
     }
     $hash = md5(time() . uniqid());
-    if ( isset($_FILES['picture']['name']) && $_FILES['picture']['name'] != "" ) {
-        $imageUploaded = true;
-        
+    if ( isset($_FILES['picture']['name']) && $_FILES['picture']['name'] != "" ) {     
         // Handle uploaded picture.
         $currentDir = getcwd();
         $uploadsDir = '\\uploads\\img\\';
-        $fileExtension = strtolower(end(explode('.', $_FILES['picture']['name'])));
+        $fileNameParts = explode('.', $_FILES['picture']['name']);
+        $fileExtension = strtolower(end($fileNameParts));
         $fileName = $hash . '.' . $fileExtension;
         $uploadsPath = $currentDir . $uploadsDir . basename($fileName);
         move_uploaded_file($_FILES['picture']['tmp_name'], $uploadsPath);
+        $imageUploaded = true;
     } else {
         $imageUploaded = false;
     }

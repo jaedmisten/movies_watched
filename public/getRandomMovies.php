@@ -3,7 +3,7 @@
 include '../config/connect.php';
 
 try {
-    $sql = 'SELECT * FROM movies WHERE `image_uploaded` = 1 GROUP BY title ORDER BY title';
+    $sql = 'SELECT * FROM movies WHERE `image_uploaded` = 1 GROUP BY title';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $movies = $stmt->fetchAll(PDO::FETCH_ASSOC);

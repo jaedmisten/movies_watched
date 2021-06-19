@@ -18,7 +18,6 @@ function ($scope, $http, $window) {
     $scope.directorSortType = 'last_name';
     $scope.directorSortReverse = false;
     $scope.addDirectorStatus = false;
-    
     $scope.goToHomePage = function() {
         $window.location.href = '/';
     };

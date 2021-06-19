@@ -361,3 +361,17 @@ public/uploads/img/*
 5/31/21 - Fixed issue where home page could show duplicates for the random movie images. Changed query to use
 GROUP BY title to prevent duplicates of movies with same title. DISTINCT does not work if multiple columns are queried
 and only one column needs to be disctinct.
+
+
+6/19/21 - Fixed two notices that were occurring in the error log when adding a movie.
+1. If the notes of new movie were blank then an undefined variable warning was logged when inserting the movie row.
+I added an else condition to set the notes variable to null if the notes field is blank.
+2. An "Only variables should be passed by reference" was because of the following line:
+    $fileExtension = strtolower(end(explode('.', $_FILES['picture']['name'])));
+That line gets the filename, splits the filename into an array of the filename and extension, and uses end to move the 
+array pointer to the last index which holds the filename extension.
+The error occured because the end function needs to have an array as input instead of a function because it passes the
+array input by reference.
+I broke up the line of code to the following:
+    $fileNameParts = explode('.', $_FILES['picture']['name']);
+    $fileExtension = strtolower(end($fileNameParts));
