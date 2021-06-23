@@ -377,3 +377,7 @@ I broke up the line of code to the following:
     $fileExtension = strtolower(end($fileNameParts));
 
 Made updates for when deleting a movie that movie's image file is also deleted.
+
+
+6/22/21 - Updated footer to stay on bottom of page when there is not enough content on the page to fill the viewport.
+Also updated the background color and top padding to center footer text.

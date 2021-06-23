@@ -1,9 +1,30 @@
-body {
-    background: lightblue;
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-#header {
-    /* margin-bottom: 25px; */
+body {
+    background: lightblue;
+    margin-bottom: 50px;
+}
+
+.container-fluid {
+    padding-bottom: 40px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #337ab7;
+    text-align: center;
+}
+
+.footer-text {
+    padding-top: 15px;
+    font-weight: bold;
+    color: black;
 }
 
 #add-movie {
@@ -48,19 +69,6 @@ body {
 .error-message {
     color: red;
     font-style: bold;
-}
-
-.footer {
-    margin-top: 120px;
-    position: relative;
-    width: 100%;
-    background-color: lightgray;
-    text-align: center;
-    padding: 15px;
-}
-
-.footer-text {
-    margin-bottom: 0;
 }
 
 #random-movies-table {
