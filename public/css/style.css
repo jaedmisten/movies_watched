@@ -97,3 +97,7 @@ body {
 #edit-movie-photo-file {
     color: transparent;
 }
+
+.center {
+    text-align: center;
+}
