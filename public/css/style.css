@@ -101,3 +101,8 @@ body {
 .center {
     text-align: center;
 }
+
+.modal-open {
+    overflow: inherit;
+    padding-right: 0 !important;
+}

@@ -381,3 +381,11 @@ Made updates for when deleting a movie that movie's image file is also deleted.
 
 6/22/21 - Updated footer to stay on bottom of page when there is not enough content on the page to fill the viewport.
 Also updated the background color and top padding to center footer text.
+
+
+6/28/21 - Centered text in 404 error document page.
+
+
+6/29/21 - Fixed footer text and body content shifting when opening bootstrap modal. This was happening on manage directors
+page and view movies page. Clicking removed scrollbar and added padding-right 17px to body. Updated style.css for 
+modal-open class to inherit overflow and for padding-right to be 0 with the !important rule to stop overriding.
