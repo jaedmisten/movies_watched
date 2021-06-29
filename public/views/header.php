@@ -23,6 +23,7 @@
     <!-- bootstrap-datepicker -->
     <script src="js/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" href="js/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css">
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon/favicon.png"/>
 </head>
 
 <body>
